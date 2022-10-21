@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:game_flappy_fortune_wheel/bird.dart';
 
@@ -9,6 +11,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  double wheelYaxis = -1;
+
+  // let g = 9.8;
+  // v = 5;
+  // acceleration : y = -g;
+  // velocity : y - -gt + v;
+  // height : y = -gt^/2 + vt;
+  // y = -4.9t^ + 5t;
+  void jump() {
+    Timer.periodic(const Duration(milliseconds: 500), (timer) {
+      setState(() {
+        wheelYaxis += 0.1;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,9 +34,14 @@ class _HomePageState extends State<HomePage> {
         children: [
           Expanded(
             flex: 2,
-            child: Container(
-              color: Colors.blue,
-              child: MyBird(),
+            child: GestureDetector(
+              onTap: jump,
+              child: AnimatedContainer(
+                alignment: Alignment(0, wheelYaxis),
+                duration: const Duration(milliseconds: 0),
+                color: Colors.blue,
+                child: MyBird(),
+              ),
             ),
           ),
           Expanded(child: Container(color: Colors.green)),
