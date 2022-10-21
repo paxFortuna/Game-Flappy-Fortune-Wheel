@@ -79,11 +79,40 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(fontSize: 30, color: Colors.white),
                         ),
                 ),
+
+                // 중앙 하단 장벽
                 AnimatedContainer(
                   alignment: const Alignment(0, 1.1),
                   duration: const Duration(milliseconds: 0),
                   child: const MyBarrier(
                     size: 200.0,
+                  ),
+                ),
+
+                // 중앙 상단 장벽
+                AnimatedContainer(
+                  alignment: const Alignment(0, -1.1),
+                  duration: const Duration(milliseconds: 0),
+                  child: const MyBarrier(
+                    size: 200.0,
+                  ),
+                ),
+
+                // 중앙 상단 장벽
+                AnimatedContainer(
+                  alignment: const Alignment(1, 1.1),
+                  duration: const Duration(milliseconds: 0),
+                  child: const MyBarrier(
+                    size: 150.0,
+                  ),
+                ),
+
+                // 중앙 상단 장벽
+                AnimatedContainer(
+                  alignment: const Alignment(1, -1.1),
+                  duration: const Duration(milliseconds: 0),
+                  child: const MyBarrier(
+                    size: 250.0,
                   ),
                 ),
               ],
