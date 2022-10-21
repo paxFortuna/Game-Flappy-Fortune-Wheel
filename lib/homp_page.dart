@@ -11,7 +11,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  double wheelYaxis = -1;
+  double wheelYaxis = 0;
+  double time = 0;
+  double height = 0;
+  double initialHeight = 0;
 
   // let g = 9.8;
   // v = 5;
@@ -20,10 +23,17 @@ class _HomePageState extends State<HomePage> {
   // height : y = -gt^/2 + vt;
   // y = -4.9t^ + 5t;
   void jump() {
-    Timer.periodic(const Duration(milliseconds: 500), (timer) {
+    initialHeight = wheelYaxis;
+
+    Timer.periodic(const Duration(milliseconds: 50), (timer) {
+      time += 0.04;
+      height = -4.9 * time * time + 2.8 * time;
       setState(() {
-        wheelYaxis += 0.1;
+        wheelYaxis = initialHeight - height;
       });
+      if(wheelYaxis > 0) {
+        timer.cancel();
+      }
     });
   }
 
