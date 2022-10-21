@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:game_flappy_fortune_wheel/barrier.dart';
 import 'package:game_flappy_fortune_wheel/bird.dart';
 
 class HomePage extends StatefulWidget {
@@ -73,13 +74,18 @@ class _HomePageState extends State<HomePage> {
                   alignment: const Alignment(0, -0.3),
                   child: gameHasStarted
                       ? const Text("")
-                      : const Text("T A P  T O  P L A Y",
-                    style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.white
-                    ),
+                      : const Text(
+                          "T A P  T O  P L A Y",
+                          style: TextStyle(fontSize: 30, color: Colors.white),
+                        ),
+                ),
+                AnimatedContainer(
+                  alignment: const Alignment(0, 1.1),
+                  duration: const Duration(milliseconds: 0),
+                  child: const MyBarrier(
+                    size: 200.0,
                   ),
-                )
+                ),
               ],
             ),
           ),
